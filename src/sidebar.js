@@ -14,6 +14,7 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import FileUpload from "./FileUpload/FileUpload";
+import PptFile from "./PptFile"
 // import SlideOneComponent from './SlideOneComponent';
 // import SlideTwoComponent from './SlideTwoComponent';
 // import SlideThreeComponent from './SlideThreeComponent';
@@ -34,7 +35,7 @@ export default function PermanentDrawerRight() {
       case 1:
         return <FileUpload />;
       case 2:
-        return <FileUpload />;
+        return <PptFile />;
       default:
         return null;
     }
