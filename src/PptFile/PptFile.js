@@ -1,27 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
+import LinearProgress from "@mui/joy/LinearProgress";
 
-const linkToPPTFile =
-  "https://onedrive.live.com/embed?resid=618985D7AF6B5830%21136071&authkey=!APdfP_pHZ-jhH7U&em=2";
 
 const containerStyle = {
-  height: "95%", // Set the container height to 90% of its parent
-  overflow: "hidden" // Hide overflowing content
+  position: "relative",
+  width: "100%",
+  height: "545px",
+  overflow: "hidden",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
 };
 
-export default function PptFile() {
+const PptFile = (props) => {
+  const { linkToPPTFile } = props;
+
+  const [loading, setLoading] = useState(true);
+
+  const handleLoad = () => {
+    setLoading(false);
+  };
+
   return (
     <div style={containerStyle}>
-        
+      {loading && <LinearProgress variant="solid" />}
+
       <iframe
         src={linkToPPTFile}
         width="100%"
         height="600px"
-
-        frameBorder="0"
         title="slides"
-        scrolling="no"
-        // Move iframe up by 10% to hide bottom part
+        onLoad={handleLoad}
+        style={{ display: loading ? "none" : "block" }}
       ></iframe>
     </div>
   );
 }
+
+export default PptFile;
